@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from "components/dropdown";
 import { FiAlignJustify } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import navbarimage from "assets/img/layout/Navbar.png";
 import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
@@ -12,7 +12,33 @@ import {
 } from "react-icons/io";
 import avatar from "assets/img/avatars/avatar4.png";
 
+import { getAuth, signOut } from "firebase/auth";
+import {auth} from "../../firebase/firebase"
+
+
 const Navbar = (props) => {
+
+  const navigate = useNavigate();
+
+  //get user
+  const userData = auth?.currentUser;
+
+
+  const handleSignout = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log('signed out!')
+      navigate("/auth/sign-in/centered")
+      localStorage.removeItem("authToken");
+      console.log("auth token", localStorage.getItem("authToken"))
+    }).catch((error) => {
+      // An error happened.
+      console.log(error.message)
+    });
+  }
+
+
   const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(
     document.body.classList.contains("dark")
@@ -199,7 +225,7 @@ const Navbar = (props) => {
               <div className="mt-3 ml-4">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
-                    👋 Hey, Adela
+                  👋 Hey, {userData?.displayName}
                   </p>{" "}
                 </div>
               </div>
@@ -218,12 +244,12 @@ const Navbar = (props) => {
                 >
                   Newsletter Settings
                 </a>
-                <a
-                  href=" "
+                <button
+                  onClick={() => handleSignout()}
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
                 >
                   Log Out
-                </a>
+                </button>
               </div>
             </div>
           }

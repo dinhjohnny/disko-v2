@@ -35,7 +35,7 @@ import ProfileNewsfeed from "views/admin/main/profile/newsfeed";
 
 import ApplicationsKanban from "views/admin/main/applications/kanban";
 import ApplicationsDataTables from "views/admin/main/applications/dataTables";
-import ApplicationsCalendar from "views/admin/main/applications/calendar";
+import ApplicationsCalendar from "views/admin/main/applications/Calendar";
 
 import EcommerceNewProduct from "views/admin/main/ecommerce/newProduct";
 import EcommerceProductSettings from "views/admin/main/ecommerce/settingsProduct";

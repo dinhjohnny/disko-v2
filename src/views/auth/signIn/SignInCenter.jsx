@@ -4,7 +4,46 @@ import Centered from "layouts/auth/types/Centered";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
+
+// new imports
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 function SignInCenter() {
+  const navigate = useNavigate();
+  
+  const handleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      console.log("token:", token)
+      console.log(user)
+      localStorage.setItem("authToken", user.accessToken);
+      navigate("/admin/dashboards/default")
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+
+      
+      // ...
+    });
+    
+  }
+  
+
   return (
     <Centered
       bgImage="linear-gradient(135deg, #868CFF 0%, #4318FF 100%)"
@@ -20,9 +59,9 @@ function SignInCenter() {
             <div className="rounded-full text-xl">
               <FcGoogle />
             </div>
-            <p className="text-sm font-medium text-navy-700 dark:text-white">
+            <button onClick={() => handleSignIn()} className="text-sm font-medium text-navy-700 dark:text-white">
               Sign In with Google
-            </p>
+            </button>
           </div>
           <div className="mb-4 flex items-center gap-3">
             <div className="h-px w-full bg-gray-200 dark:!bg-navy-700" />

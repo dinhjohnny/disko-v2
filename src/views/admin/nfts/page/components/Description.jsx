@@ -2,7 +2,7 @@ import Card from "components/card";
 import { MdVerified } from "react-icons/md";
 
 const Description = (props) => {
-  const { creator, description } = props;
+  const { creator, description, location} = props;
   return (
     <Card extra="w-full mt-3 px-[30px] py-[30px]">
       <h4 className="text-xl font-bold text-navy-700 dark:text-white">
@@ -12,7 +12,8 @@ const Description = (props) => {
         <p className="text-lg text-gray-600">Created by</p>
         <p className=" text-base font-semibold text-[#3965FF] dark:text-white">
           {" "}
-          {creator}{" "}
+          {creator}{"  "}
+          {location}
         </p>
         <div className="text-base text-[#3965FF]">
           <MdVerified />

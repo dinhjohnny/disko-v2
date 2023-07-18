@@ -18,28 +18,130 @@ import Nft4 from "assets/img/nfts/Nft4.png";
 import Nft5 from "assets/img/nfts/Nft5.png";
 import Nft6 from "assets/img/nfts/Nft6.png";
 
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { FiEdit3 } from "react-icons/fi";
+import { useNavigate, useParams } from "react-router-dom";
+import { auth } from "../../../../firebase/firebase";
+import { joinCircle, getCircle, viewCount, textBlast,archiveCircle} from "../../../../firebase/firebase-calls";
+//import EditProfileModal from "./EditProfileModal";
+// import {  Questions } from "components/components";
+// import { ResponseModal } from "components/ResponseModal"
+
+import { Link } from "react-router-dom";
+// import SignUpPop from "./Signup";
+import { format } from 'date-fns'
+// import { RWebShare } from "react-web-share";
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import AccessTimeTwoToneIcon from '@mui/icons-material/AccessTimeTwoTone';
+// import PlaceTwoToneIcon from '@mui/icons-material/PlaceTwoTone';
+// import IosShareIcon from '@mui/icons-material/IosShare';
+// import GoogleCalendar from "components/GoogleCalendar";
+// import ICalendarLink from "react-icalendar-link";
+// import EditCircle from "./editCircle";
+// import { getAnalytics, logEvent } from "firebase/analytics";
+// import backgroundImage from "assets/BI2.jpg"
+// import confetti from 'canvas-confetti';
+
 const NftPage = () => {
+  //Logic
+  const options = { month: 'long', day: 'numeric' };
+
+  const circleID = "9wBSc8EgOjPcerHmrVJQ";
+  const { user } = useSelector((state) => state.user);
+  const { allPosts } = useSelector((state) => state.allPosts);
+  const { allUsers } = useSelector((state) => state.allUsers);
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const currentUser = auth?.currentUser;
+  const [circleData, setCircleData] = useState([]);
+  const authToken = localStorage.getItem("authToken");
+  const [showSignUp, setShowSignUp] = useState(false)
+  const [userData, setUserData] = useState([])
+  const [choice, setChoice] = useState("")
+  const website = `https://disko.rsvp/circle/${circleID} `
+  const [showEdit, setShowEdit] = useState(false)
+
+
+  //get the one discussion for the circle
+  const filteredPosts = allPosts?.filter(
+    (post) => post.circle == circleID
+  );
+
+  //join the circle with the response if logged in
+ const signUp = async(choice) =>{
+    if (authToken){
+      console.log("User Selected:" + choice)
+      joinCircle (currentUser, circleData, choice)
+      if (choice === "Yes") {
+        // onClickConfetti();
+      }
+    }else{
+      //open the popup for signin 
+      setChoice(choice)
+      setShowSignUp((prev) => !prev)
+    }
+  }
+  function formatAMPM(date1, date2) {
+    var hours1 = date1.getHours();
+    var hours2 = date2.getHours();
+    var ampm1 = hours1 >= 12 ? 'pm' : 'am';
+    hours1 = hours1 % 12;
+    hours1 = hours1 ? hours1 : 12; // the hour '0' should be '12'
+  
+    console.log(hours2);
+    var ampm2 = hours2 >= 12 ? 'pm' : 'am';
+    hours2 = hours2 % 12;
+    hours2 = hours2 ? hours2 : 12; // the hour '0' should be '12'
+  
+    var strTime = hours1 + ' ' + ampm1 + ' - ' + hours2 + ' ' + ampm2;
+    return strTime;
+  }
+ 
+
+  useEffect(() => {
+    if (circleData?.length == 0) {
+      getCircle(circleID, setCircleData);
+      console.log("circleData" + circleData);
+      
+
+      setTimeout(() => {
+        viewCount(circleID);
+        setIsLoading(false);
+      }, 750); // wait for 0.75 second before calling getCircle
+    }
+  }, [circleData]);
+
+  const archive = async(e) =>{
+    archiveCircle(`${circleID}`);
+    navigate("/");
+  }
+
+
+
   return (
     <div className="mt-4 grid h-full w-full grid-cols-1 gap-5 xl:mt-3">
       <div className="grid h-full w-full grid-cols-6 gap-[20px]">
         <div className="col-span-6 lg:col-span-3">
-          <Banner image={NftLarge1} />
+          <Banner image={circleData?.pic} />
           <Description
-            creator={"simmmple.web"}
+            creator={circleData?.creatorName}
             description={
-              " The Abstractus® project is an online art show and the First Art NFTs on Ethereum, launched on May 9, 2017. Abstractus® features 28 unique series of cards from 7 different artists. Abstractus® are referenced with CryptoAbstractus® and Crypto in the original ERC-721 Non-Fungible Token Standard, and pre-dates them both. Join the Abstractus® Discord and check out theAbstractus® Docs to find out more."
+              circleData?.circleDescription
             }
+            location={circleData?.circleCosts}
           />
         </div>
 
         <div className=" col-span-6 lg:!col-span-3">
           <div className=" xl:px-16">
             <Auction
-              name="Color Abstractus®"
-              creator="Simmmple"
+              name={circleData?.circleName}
+              creator={circleData?.creatorName}
               creatorAvatar={AvatarSimmmple}
-              price="3.87 ETH"
-              bid="2.82 ETH"
+              price=  {new Date(circleData?.date?.seconds*1000).toLocaleString("en-US", options)}
+              bid={`${circleData?.views} views`}
             />
           </div>
           <div className="pt-4">

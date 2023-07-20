@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { auth } from "./firebase/firebase";
+import NftPage from "views/admin/nfts/page";
 
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
       <Route path="admin/*" element={<AdminLayout />} />
       <Route path="rtl/*" element={<RTLLayout />} />
       <Route path="/" element={<Navigate to="/admin" replace />} />
+      <Route path="/admin/nfts/:circleID"  element={<NftPage/>} />
     </Routes>
   );
 };

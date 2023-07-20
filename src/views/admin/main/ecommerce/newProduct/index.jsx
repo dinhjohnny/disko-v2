@@ -11,9 +11,9 @@ const ProductNew = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const steps = [
-    { stepNo: 1, name: "Product Info" },
-    { stepNo: 2, name: "Media" },
-    { stepNo: 3, name: "Pricing" },
+    { stepNo: 1, name: "Event Info" },
+    { stepNo: 2, name: "Event Image" },
+    { stepNo: 3, name: "Review Event" },
   ];
 
   const displayStep = (step) => {

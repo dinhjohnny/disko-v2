@@ -21,9 +21,41 @@ import { IoMdHome } from "react-icons/io";
 import { IoDocuments } from "react-icons/io5";
 import { MdBarChart, MdDashboard } from "react-icons/md";
 
+// new import
+import NftCard from "components/card/NftCard";
+import Banner from "views/admin/nfts/collection/components/Banner";
+import Search from "views/admin/nfts/collection/components/Search";
+import Nft2 from "assets/img/nfts/Nft2.png";
+import Nft4 from "assets/img/nfts/Nft4.png";
+import Nft5 from "assets/img/nfts/Nft5.png";
+import Nft6 from "assets/img/nfts/Nft6.png";
+import avatar1 from "assets/img/avatars/avatar1.png";
+import avatar2 from "assets/img/avatars/avatar2.png";
+import avatar3 from "assets/img/avatars/avatar3.png";
+
+import { Link } from "react-router-dom";
+
+
+
 const Dashboard = () => {
   //Data from the old dashboard
   const options = { month: 'long', day: 'numeric' , hour: 'numeric', minute: 'numeric'};
+
+  function formatAMPM(date1, date2) {
+    var hours1 = date1.getHours();
+    var hours2 = date2.getHours();
+    var ampm1 = hours1 >= 12 ? 'pm' : 'am';
+    hours1 = hours1 % 12;
+    hours1 = hours1 ? hours1 : 12; // the hour '0' should be '12'
+  
+    console.log(hours2);
+    var ampm2 = hours2 >= 12 ? 'pm' : 'am';
+    hours2 = hours2 % 12;
+    hours2 = hours2 ? hours2 : 12; // the hour '0' should be '12'
+  
+    var strTime = hours1 + ' ' + ampm1 + ' - ' + hours2 + ' ' + ampm2;
+    return strTime;
+  }
 
   const {allCircles} = useSelector((State) => State.allCircles);
   const [userData, setUserData] = useState([])
@@ -132,6 +164,34 @@ console.log(eventViews)
       title={"Best CTR Event"}
       subtitle={`${maxCircle} @ ${(maxRatio * 100).toFixed(2)}% CTR`}
     />
+
+    
+    {filteredCircles?.length > 0 ? (
+      filteredCircles?.map((circles) => (
+        <Link className="button rounded-lg"
+        to={`/admin/nfts/${circles?.circleID}`}
+        >
+          <NftCard
+          bidders={[avatar1, avatar2, avatar3]} // images for those that have rsvped
+          title={circles.circleName} // event title
+          author={circles?.creatorName}
+          price={formatAMPM(new Date(circles?.start), new Date(circles?.end))}
+          image={circles.pic}
+        />
+      
+    </Link>
+    )) )
+  : (
+    <div className="h-[30vh] w-full ml-6 overflow-none"><p className="text-sm md:text-md">Find Events to RSVP for on the <a href="/home" className="underline text-blue-300">home screen</a></p></div>
+
+  )
+}
+
+
+        
+
+
+
       </div>
           {/* overall & Balance */}
           <div className="mb-5 grid grid-cols-6 gap-5">

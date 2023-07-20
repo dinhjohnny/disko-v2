@@ -164,7 +164,7 @@ const routes = [
       {
         name: "NFT Page",
         layout: "/admin",
-        path: "/nfts/page",
+        path: "/nfts/", // ????????
         component: <NFTPage />,
         secondary: true,
       },

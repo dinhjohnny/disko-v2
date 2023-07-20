@@ -47,7 +47,7 @@ const NftPage = () => {
   //Logic
   const options = { month: 'long', day: 'numeric' };
 
-  const circleID = "9wBSc8EgOjPcerHmrVJQ";
+  const { circleID } = useParams();
   const { user } = useSelector((state) => state.user);
   const { allPosts } = useSelector((state) => state.allPosts);
   const { allUsers } = useSelector((state) => state.allUsers);
@@ -109,7 +109,7 @@ const NftPage = () => {
       setTimeout(() => {
         viewCount(circleID);
         setIsLoading(false);
-      }, 750); // wait for 0.75 second before calling getCircle
+      }, 1000); // wait for 0.75 second before calling getCircle
     }
   }, [circleData]);
 

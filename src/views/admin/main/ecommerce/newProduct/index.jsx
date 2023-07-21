@@ -8,9 +8,9 @@ import Pricing from "./components/steps/Pricing";
 import Card from "components/card";
 const ProductNew = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [userData, setUserData] = useContext(UseContextProvider);
+  //const [userData, setUserData] = useContext(UseContextProvider);
 
-  console.log("userdata", userData)
+  // console.log("userdata", userData)
   const steps = [
     { stepNo: 1, name: "Event Info" },
     { stepNo: 2, name: "Event Image" },

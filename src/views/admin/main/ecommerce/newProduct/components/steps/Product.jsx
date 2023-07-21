@@ -119,7 +119,7 @@ const Product = () => {
           {/* text area */}
           <TextField
             className="py-8"
-            placeholder="Short desscription about the event!"
+            placeholder="Write a short description for your event!"
             id="textarea"
             cols="30"
             rows="7" 

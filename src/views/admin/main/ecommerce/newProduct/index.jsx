@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Stepper from "./components/Stepper";
 import StepperControl from "./components/StepperControl";
 import { UseContextProvider } from "./contexts/StepperContext";
@@ -6,10 +6,11 @@ import Product from "./components/steps/Product";
 import Media from "./components/steps/Media";
 import Pricing from "./components/steps/Pricing";
 import Card from "components/card";
-
 const ProductNew = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [userData, setUserData] = useContext(UseContextProvider);
 
+  console.log("userdata", userData)
   const steps = [
     { stepNo: 1, name: "Event Info" },
     { stepNo: 2, name: "Event Image" },

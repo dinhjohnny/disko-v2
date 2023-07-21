@@ -124,7 +124,7 @@ const NftPage = () => {
     <div className="mt-4 grid h-full w-full grid-cols-1 gap-5 xl:mt-3">
       <div className="grid h-full w-full grid-cols-6 gap-[20px]">
         <div className="col-span-6 lg:col-span-3">
-          <Banner image={circleData?.pic} />
+          <Banner className="h-[200px] w-[200px]" image={circleData?.pic} />
           <Description
             creator={circleData?.creatorName}
             description={
@@ -156,7 +156,7 @@ const NftPage = () => {
 
       <div className="h-full w-full rounded-[20px]">
         <h4 className="mt-7 ml-5 text-2xl font-medium text-navy-700 dark:text-white">
-          More from this collection
+          More Events Like This One...
         </h4>
         <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 2xl:grid-cols-4">
           <NftCard

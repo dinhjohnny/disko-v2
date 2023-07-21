@@ -67,7 +67,7 @@ const Product = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
         <Card extra={`max-w-full`}>
-          <div className="text-navy-700 font-bold text-sm mt-2 mb-2 pl-4">Date</div>
+          <div className="text-navy-700 font-bold text-sm mt-2 mb-4 pl-4">Date</div>
           <Calendar
           onChange={onDateChange}
           value={dateValue}
@@ -82,7 +82,7 @@ const Product = () => {
 
         {/* right side */}
         <div className="col-span-2 md:col-span-1">
-        <div className="w-72 text-gray-200 mb-8">
+        <div className="w-72 text-gray-200 mb-4">
           
           <label className="text-navy-700 font-bold text-sm pl-4">Event Time</label>
           <div className="flex-row flex space-x-4">
@@ -114,17 +114,19 @@ const Product = () => {
           </div>
 
     </div>
-
+    <div>
+    <label className="text-navy-700 font-bold text-sm pl-4">Event Time</label>
           {/* text area */}
           <TextField
             className="py-8"
-            label="Description"
-            placeholder="Short description about the event!"
+            placeholder="Short desscription about the event!"
             id="textarea"
             cols="30"
             rows="7" 
             onChange={(e) => setDescription(e.target.value)}
           />
+    </div>
+
         </div>
       </div>
     </div>

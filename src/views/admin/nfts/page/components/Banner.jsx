@@ -7,7 +7,7 @@ const Banner = (props) => {
   return (
     <div
       style={{ backgroundImage: `url(${image})` }}
-      className="relative h-[400px] w-full rounded-[20px] bg-cover bg-no-repeat lg:h-[930px]"
+      className="relative h-[400px] w-full md:w-[550px] mx-0 md:mx-32 rounded-[20px] bg-cover bg-no-repeat lg:h-[550px]"
     >
       <div
         onClick={() => setLike(!like)}

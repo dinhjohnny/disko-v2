@@ -1,6 +1,7 @@
 // Assets
-import { IoMdTrendingUp } from "react-icons/io";
-import { MdVerified, MdOutlineMonetizationOn } from "react-icons/md";
+import { IoMdTrendingUp} from "react-icons/io";
+
+import { MdVerified, MdOutlineMonetizationOn, MdCalendarMonth } from "react-icons/md";
 
 const Auction = (props) => {
   const { name, price, creator, creatorAvatar, bid } = props;
@@ -21,7 +22,7 @@ const Auction = (props) => {
           </div>
           <div>
             <p className="text-sm font-medium text-gray-600 md:text-base">
-              Creator
+              Host
             </p>
             <div className="flex items-center justify-center gap-2 text-sm font-semibold text-navy-700 dark:text-white md:text-lg">
               <p>{creator}</p>
@@ -36,11 +37,11 @@ const Auction = (props) => {
         {/* monetization */}
         <div className="flex items-center justify-between gap-2 rounded-[20px] px-2 md:!gap-[12px]">
           <div className="flex h-11 w-11 items-center justify-center rounded-full bg-green-500 text-[40px] text-white md:h-[60px] md:w-[60px]">
-            <MdOutlineMonetizationOn />
+            <MdCalendarMonth />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-600 md:text-base">
-              Instant price
+              Date
             </p>
             <div className="flex items-center justify-center gap-1 text-sm font-semibold text-navy-700 dark:text-white md:gap-2 md:text-lg">
               <p> {price} </p>
@@ -57,20 +58,20 @@ const Auction = (props) => {
       <div className="flex h-full w-full flex-col xl:px-3">
         <div className="mt-14 flex h-[450px] w-full flex-col items-center rounded-[20px] border border-gray-200 pt-10 shadow-xl shadow-gray-100 dark:!border-none dark:bg-navy-800 dark:shadow-none md:h-[515px]">
           <h4 className="mt-4 text-[22px] font-medium text-navy-700 dark:text-white">
-            Current Bid
+            
           </h4>
           <h1 className="mt-2 text-[45px] font-bold text-navy-700 dark:text-white md:text-[60px]">
             {" "}
             {bid}{" "}
           </h1>
           <div className="mt-2 flex items-center gap-2">
-            <h3 className="text-2xl font-bold text-gray-600"> $10.927,84 </h3>
+            <h3 className="text-2xl font-bold text-gray-600">20 RSVPS</h3>
             <p className="text-2xl text-green-500">
               <IoMdTrendingUp />
             </p>
           </div>
           <h5 className="mt-[58px] text-xl font-medium text-navy-700 dark:text-white md:mt-[85px]">
-            Auction ends in
+            Time left to RSVP
           </h5>
 
           <div className="mt-7 flex gap-14 md:mt-10">
@@ -96,7 +97,7 @@ const Auction = (props) => {
         </div>
 
         <button className="px-full linear mt-5 rounded-xl bg-brand-500 py-3 text-base font-medium text-white transition duration-200 hover:bg-brand-600 active:bg-brand-700 dark:bg-brand-400 dark:text-white dark:hover:bg-brand-300 dark:active:bg-brand-200">
-          Place a bid
+          RSVP for event
         </button>
       </div>
     </div>

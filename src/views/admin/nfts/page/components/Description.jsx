@@ -13,13 +13,22 @@ const Description = (props) => {
         <p className=" text-base font-semibold text-[#3965FF] dark:text-white">
           {" "}
           {creator}{"  "}
-          {location}
+
         </p>
         <div className="text-base text-[#3965FF]">
           <MdVerified />
         </div>
       </div>
-      <p className="mt-4 text-lg font-normal leading-8 text-navy-700 dark:text-white">
+      <div className="flex items-center gap-2">
+        <p className="text-lg text-gray-600">Location: </p>
+        <p className=" text-base font-semibold text-[#3965FF] dark:text-white">
+          {" "}
+          {location}{"  "}
+
+        </p>
+
+      </div>
+      <p className=" text-base text-navy-700 dark:text-white">
         {description}
       </p>
     </Card>

@@ -168,7 +168,7 @@ console.log(eventViews)
     
     {filteredCircles?.length > 0 ? (
       filteredCircles?.map((circles) => (
-        <Link className="button rounded-lg"
+        <Link className="button rounded-lg md:h-[300px] md:w-[300px] md:mb-4"
         to={`/admin/nfts/${circles?.circleID}`}
         >
           <NftCard

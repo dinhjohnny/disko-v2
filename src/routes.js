@@ -239,9 +239,9 @@ const routes = [
         collapse: true,
         items: [
           {
-            name: "New Product",
+            name: "Create New Event",
             layout: "/admin",
-            path: "/main/ecommerce/new-prodcut",
+            path: "/main/ecommerce/new-event",
             exact: false,
             component: <EcommerceNewProduct />,
           },

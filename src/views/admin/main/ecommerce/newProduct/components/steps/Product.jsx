@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 import TimePicker from 'react-time-picker';
+import { useStepperContext } from "../../contexts/StepperContext";
 
 
 const Product = () => {
@@ -19,6 +20,21 @@ const Product = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
+  //Create Context for saving data
+  const { userData, setUserData } = useStepperContext();
+
+  const handleChange = (event) => {
+    setUserData({
+      ...userData,
+      [event.target.id]: event.target.value,
+    });
+  };
+  const handleOther = (id, value) => {
+    setUserData({
+      ...userData,
+      [id]: value,
+    });
+  };
 
 
 
@@ -27,17 +43,17 @@ const Product = () => {
   'max-h-40 overflow-y-auto shadow-lg border rounded-lg focus:outline-none focus:ring focus:border-blue-300';
 
 
-  useEffect(
-  () => {
-    console.log("current date: ", dateValue)
-    console.log("hour: ", hour)
-    console.log("time: ", min)
-    console.log("location: ", location)
-    console.log("name: ", name)
-    console.log("description: ", description)
+  // useEffect(
+  // () => {
+  //   console.log("current date: ", dateValue)
+  //   console.log("hour: ", hour)
+  //   console.log("time: ", min)
+  //   console.log("location: ", location)
+  //   console.log("name: ", name)
+  //   console.log("description: ", description)
 
-  }
-  ,[dateValue, hour, min, location, name, description])
+  // }
+  // ,[dateValue, hour, min, location, name, description])
 
   return (
     <div className="h-full w-full rounded-[20px] px-3 pt-7 md:px-8">
@@ -55,7 +71,8 @@ const Product = () => {
             label="Event Name"
             placeholder="eg. Bonfire Kickback"
             id="eventname"
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleChange}
+            value={userData.eventname || ''} // Add this line
             type="text"
           />
           <InputField
@@ -64,12 +81,13 @@ const Product = () => {
             placeholder="eg. 17542 Wayne Ave"
             id="location"
             type="text"
-            onChange={(e) => setLocation(e.target.value)}
-          />
+            onChange={handleChange}
+            value={userData.location || ''} // Add this line          
+            />
         <Card extra={`max-w-full`}>
           <div className="text-navy-700 font-bold text-sm mt-2 mb-4 pl-4">Date</div>
           <Calendar
-          onChange={onDateChange}
+          onChange={(value) = handleOther('date', value)}
           value={dateValue}
           prevLabel={<MdChevronLeft className="ml-1 h-6 w-6" />}
           nextLabel={<MdChevronRight className="ml-1 h-6 w-6" />}

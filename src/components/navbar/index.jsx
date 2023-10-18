@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "components/dropdown";
 import { FiAlignJustify } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,6 +15,7 @@ import avatar from "assets/img/avatars/avatar4.png";
 
 import { getAuth, signOut } from "firebase/auth";
 import {auth} from "../../firebase/firebase"
+import {getUser} from "../../firebase/firebase-calls"
 
 
 const Navbar = (props) => {
@@ -21,7 +23,13 @@ const Navbar = (props) => {
   const navigate = useNavigate();
 
   //get user
-  const userData = auth?.currentUser;
+  const [userData, setUserData] = useState([])
+  const currentUser = auth?.currentUser;
+
+  useEffect ( () => {
+    getUser(currentUser, setUserData)
+    console.log(userData)
+  }, [currentUser])
 
 
   const handleSignout = () => {
@@ -216,7 +224,7 @@ const Navbar = (props) => {
           button={
             <img
               className="h-10 w-10 rounded-full"
-              src={avatar}
+              src={userData.coverPic}
               alt="Elon Musk"
             />
           }
@@ -225,7 +233,7 @@ const Navbar = (props) => {
               <div className="mt-3 ml-4">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
-                  👋 Hey, {userData?.displayName}
+                  👋 Hey, {userData.name}
                   </p>{" "}
                 </div>
               </div>
@@ -233,7 +241,7 @@ const Navbar = (props) => {
 
               <div className="mt-3 ml-4 flex flex-col">
                 <a
-                  href=" "
+                  href="/nowhere"
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   Profile Settings

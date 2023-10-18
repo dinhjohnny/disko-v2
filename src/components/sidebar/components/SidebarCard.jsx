@@ -1,8 +1,22 @@
 import LineChart from "components/charts/LineChart";
 import { lineChartDataSidebar } from "variables/charts";
 import { lineChartOptionsSidebar } from "variables/charts";
+import { useState, useEffect } from "react";
 import avatar4 from "assets/img/avatars/avatar4.png";
+import {auth} from "../../../firebase/firebase";
+import { getUser } from "../../../firebase/firebase-calls";
+
 const FreeCard = () => {
+
+  const [userData, setUserData] = useState([])
+  const currentUser = auth?.currentUser;
+
+  useEffect ( () => {
+    getUser(currentUser, setUserData)
+    console.log(userData)
+  }, [userData])
+
+
   return (
     <div className="relative flex h-[300px] w-[240px] flex-col items-center rounded-[20px] bg-gradient-to-br from-brandLinear to-blueSecondary">
       <div className="mt-8 flex flex-col items-center">
@@ -23,13 +37,15 @@ const FreeCard = () => {
       {/* Sidebar profile info */}
       <div className="my-14 ml-2 flex items-center justify-center gap-3">
         <div className="h-12 w-12 rounded-full bg-blue-200">
-          <img src={avatar4} className="rounded-full" alt="avatar" />
+          { /* User name and pic for bottom left of main dashobard*/}
+          <img src={userData?.coverPic} className="rounded-full" alt="avatar" />
         </div>
         <div className="ml-1">
           <h4 className="text-base font-bold text-navy-700 dark:text-white">
-            Adela Parkson
+          {userData?.name}
+
           </h4>
-          <p className="text-sm font-medium text-gray-600">Product Designer</p>
+          <p className="text-sm font-medium text-gray-600">DISKO Member</p>
         </div>
       </div>
     </div>

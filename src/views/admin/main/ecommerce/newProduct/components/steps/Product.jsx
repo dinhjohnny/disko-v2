@@ -16,6 +16,8 @@ const Product = () => {
   const [time, setTime] = useState('12:00');
   const [hour, setHour] = useState('12');
   const [min, setMin] = useState('00');
+  const [value, setValue] = useState(0);
+
   const [location, setLocation] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');

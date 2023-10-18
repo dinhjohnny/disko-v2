@@ -1,9 +1,21 @@
 import React from "react";
 import avatar from "assets/img/avatars/avatar11.png";
+import { useEffect, useState } from "react";
 import banner from "assets/img/profile/banner.png";
 import Card from "components/card";
+import {auth} from "../../../../../../firebase/firebase"
+import { getUser } from "../../../../../../firebase/firebase-calls";
 
 const Banner = () => {
+  const [userData, setUserData] = useState([])
+  const currentUser = auth?.currentUser;
+
+  useEffect ( () => {
+    getUser(currentUser, setUserData)
+    console.log(userData)
+  }, [currentUser])
+
+
   return (
     <Card extra={"items-center w-full h-full p-[16px] bg-cover"}>
       {/* Background and profile */}
@@ -12,16 +24,16 @@ const Banner = () => {
         style={{ backgroundImage: `url(${banner})` }}
       >
         <div className="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
-          <img className="h-full w-full rounded-full" src={avatar} alt="" />
+          <img className="h-full w-full rounded-full" src={userData?.coverPic } alt="ne" />
         </div>
       </div>
 
       {/* Name and position */}
       <div className="mt-16 flex flex-col items-center">
         <h4 className="text-xl font-bold text-navy-700 dark:text-white">
-          Adela Parkson
+        {userData?.name}
         </h4>
-        <h5 className="text-base font-normal text-gray-600">Product Manager</h5>
+        <h5 className="text-base font-normal text-gray-600">Event Host</h5>
       </div>
 
       {/* Post followers */}
@@ -30,19 +42,19 @@ const Banner = () => {
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
             17
           </h4>
-          <p className="text-sm font-normal text-gray-600">Posts</p>
+          <p className="text-sm font-normal text-gray-600">Events</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
-            9.7K
+            2.7K
           </h4>
-          <p className="text-sm font-normal text-gray-600">Followers</p>
+          <p className="text-sm font-normal text-gray-600">RSVPs</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
             434
           </h4>
-          <p className="text-sm font-normal text-gray-600">Following</p>
+          <p className="text-sm font-normal text-gray-600">Followers</p>
         </div>
       </div>
     </Card>

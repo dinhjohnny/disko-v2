@@ -18,9 +18,9 @@ const ProfileSetting = () => {
         <div>
           <Social />
         </div>
-        <div>
+        {/* <div>
           <Password />
-        </div>
+        </div> */}
       </div>
     </div>
   );

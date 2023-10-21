@@ -59,6 +59,27 @@ export const userLogin = async (
     console.log(error.message);
   }
 };
+export const createProfile = async (currentUser) => {
+ 
+    await setDoc (
+      doc(collection(db, "users"), currentUser.uid), {
+        userID: currentUser.uid,
+        fullName: currentUser.displayName,
+        profilePic: currentUser.photoURL,
+        bio:"",
+        major: "",
+        linkedIn: "",
+        instagram: "",
+        interests: "",
+        networkingGoal: "",
+        dedication: "",
+        email: currentUser.email,
+      },
+      { merge: true }
+    );
+  };
+
+
 export const phoneLogin = async (
   phoneNumber,
   userID,
@@ -102,8 +123,10 @@ export const getUser = async (user, setUserData) => {
     const docSnap = await getDoc(userDoc);
     if (docSnap.exists()) {
       setUserData(docSnap.data());
+      return true;
     } else {
       console.log("Could not retrieve user data");
+      return false;
 
     }
   } catch (error) {
@@ -112,40 +135,25 @@ export const getUser = async (user, setUserData) => {
 };
 
 export const profileUpdate = async (
-  userInfo,
   userData,
   currentUser,
-  dispatch
 ) => {try{ await setDoc(
   doc(db, "users", currentUser?.uid),
   {
-    coverPic: userInfo?.coverPic
-      ? userInfo?.coverPic
-      : userData.coverPic ?? "",
-    bio: userInfo?.bio ? userInfo?.bio : userData.bio ?? "",
-    name: userInfo?.name ? userInfo?.name : userData.name ?? "",
-    Instagram: userInfo?.Instagram
-? userInfo?.Instagram
-: userData.Instagram ?? "",
-Snapchat: userInfo?.Snapchat
-? userInfo?.Snapchat
-: userData.Snapchat ?? "",
-LinkedIn: userInfo?.LinkedIn
-? userInfo?.LinkedIn
-: userData.LinkedIn ?? "",
-Website: userInfo?.Website
-? userInfo?.Website
-: userData.Website ?? "",
-Discord: userInfo?.Discord
-? userInfo?.Discord
-: userData.Discord ?? "",
-
+    bio: userData?.bio ?? "",
+        dedication: userData?.dedication ?? "",
+        fullName: userData?.fullName ?? "",
+        instagram: userData?.instagram ?? "",
+        interests: userData?.interests ?? "",
+        linkedIn: userData?.linkedIn ?? "",
+        major: userData?.major ?? "",
+        networkingGoal: userData?.networkingGoal ?? "",
+        profilePic: userData?.profilePic ?? "",
 
   
   },
   { merge: true }
 );
-console.log(userInfo)
 }
 
 catch(e){

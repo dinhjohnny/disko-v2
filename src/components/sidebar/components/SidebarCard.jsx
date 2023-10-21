@@ -11,10 +11,10 @@ const FreeCard = () => {
   const [userData, setUserData] = useState([])
   const currentUser = auth?.currentUser;
 
-  useEffect ( () => {
-    getUser(currentUser, setUserData)
-    console.log(userData)
-  }, [userData])
+  // useEffect ( () => {
+  //   getUser(currentUser, setUserData)
+  //   console.log(userData)
+  // }, [userData])
 
 
   return (

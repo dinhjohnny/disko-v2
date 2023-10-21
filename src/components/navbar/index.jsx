@@ -28,7 +28,7 @@ const Navbar = (props) => {
 
   useEffect ( () => {
     getUser(currentUser, setUserData)
-    console.log(userData)
+    console.log("current user data: " + userData)
   }, [currentUser])
 
 
@@ -39,7 +39,7 @@ const Navbar = (props) => {
       console.log('signed out!')
       navigate("/auth/sign-in/centered")
       localStorage.removeItem("authToken");
-      console.log("auth token", localStorage.getItem("authToken"))
+      console.log("auth token" + localStorage.getItem("authToken"))
     }).catch((error) => {
       // An error happened.
       console.log(error.message)

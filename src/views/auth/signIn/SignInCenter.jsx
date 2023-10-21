@@ -1,20 +1,32 @@
 import Card from "components/card";
 import InputField from "components/fields/InputField";
 import Centered from "layouts/auth/types/Centered";
-import React from "react";
+import {React, useState, useEffect} from "react";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
+import { getUser, createProfile } from "../../../firebase/firebase-calls";
+
 
 // new imports
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 function SignInCenter() {
   const navigate = useNavigate();
+
+  //functions for checking if new user
+  const [userData, setUserData] = useState({});
+  const [newUser, setNewUser] = useState(false);
+
+  const auth = getAuth();
+  const currentUser = auth?.currentUser;      
+
+
+
   
   const handleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
+    
     signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -25,7 +37,8 @@ function SignInCenter() {
       console.log("token:", token)
       console.log(user)
       localStorage.setItem("authToken", user.accessToken);
-      navigate("/admin/dashboards/default")
+  
+
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     }).catch((error) => {
@@ -42,8 +55,53 @@ function SignInCenter() {
     });
     
   }
-  
+  // useEffect(() => {
+  //   if (currentUser && currentUser.uid) {
+  //     getUser(currentUser, setUserData)
+  //       // .then(() => setLoading(false))
+  //       .catch(error => console.error('Error fetching user data:', error));
+  //   } else {
+  //     console.error('No current user or missing UID:', currentUser);
+  //   }
+  // }, [currentUser]);
 
+
+  // useEffect(() => {
+  //   if (Object.keys(userData).length > 0) {  // Check if userData has been updated
+  //     console.log("test to see if userData is filled for login: " + userData.userID);
+  //     if (userData.userID) {
+  //       console.log("old user")
+  //       navigate("/admin/nvc");
+  //     }
+  //     else {
+  //       console.log("new user")
+  //       createProfile(currentUser);
+  //       navigate("/admin/main/profile/settings");
+  //     }
+  //   }
+    
+  // }, [userData, currentUser, navigate]);  // Re-run this useEffect when userData, currentUser, or navigate changes
+  
+  useEffect(() => {
+    if (currentUser && currentUser.uid) {
+      getUser(currentUser, setUserData)
+        .then(userExists => {
+          if (userExists) {
+            console.log("old user");
+            navigate("/admin/nvc");
+          } else {
+            console.log("new user");
+            createProfile(currentUser);
+            navigate("/admin/main/profile/settings");
+          }
+        })
+        .catch(error => console.error('Error fetching user data:', error));
+    } else {
+      console.error('No current user or missing UID:', currentUser);
+    }
+  }, [currentUser, navigate]);  // Now this useEffect only depen
+
+  
   return (
     <Centered
       bgImage="linear-gradient(135deg, #868CFF 0%, #4318FF 100%)"

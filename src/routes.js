@@ -157,7 +157,7 @@ const routes = [
       {
         name: "Collection",
         layout: "/admin",
-        path: "/nfts/collection",
+        path: "/nvc",
         component: <NFTCollection />,
         secondary: true,
       },

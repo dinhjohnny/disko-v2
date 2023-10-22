@@ -18,7 +18,7 @@ const NftCollection = () => {
       </div>
 
       <h4 className="ml-[23px] mt-8 text-2xl font-bold text-navy-700 dark:text-white">
-        More events like this...
+        Join a team!
       </h4>
 
       <div className="mt-[38px] grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">

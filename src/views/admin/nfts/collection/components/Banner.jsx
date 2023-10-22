@@ -1,8 +1,10 @@
 import NftBanner2 from "assets/img/nfts/NftBanner2.png";
 import NftProfile from "assets/img/nfts/NftProfile.png";
 import { MdVerified } from "react-icons/md";
-import { FaEthereum } from "react-icons/fa";
+import { FaEthereum, FaDollarSign } from "react-icons/fa";
 import Card from "components/card";
+import TimelineItem from "components/dataDisplay/TimelineItem";
+
 const Banner = () => {
   return (
     <div className="flex h-full w-full flex-col items-center rounded-[20px]">
@@ -17,12 +19,12 @@ const Banner = () => {
       {/* profile info */}
       <div className="mt-[85px] flex flex-col items-center">
         <h1 className="mt-2 text-[55px] font-bold text-navy-700 dark:text-white">
-          Abstractus®
+          New Venture Competition®
         </h1>
         <p className="mt-[10px] flex w-full items-center justify-center text-lg font-medium text-gray-600">
           Created by{" "}
           <p className="ml-1 text-base font-bold text-[#3965FF] dark:text-white">
-            simmmple.web{" "}
+            Jenn Huynh
           </p>
           <p className="ml-1 text-[#3965FF]">
             <MdVerified />
@@ -32,32 +34,32 @@ const Banner = () => {
       {/* eth owned */}
       <Card
         extra={
-          "grid grid-cols-1 dark:shadow-none md:grid-cols-4 w-full md:w-[800px] h-full md:h-[160px] gap-2 py-4 mt-9"
+          "grid grid-cols-1 dark:shadow-none md:grid-cols-3 w-full md:w-[800px] h-full md:h-[160px] gap-2 py-4 mt-9"
         }
       >
         <div className="flex flex-col items-center justify-center border-gray-200 py-3 dark:border-white/10 md:border-r-2 md:py-0">
           <h3 className="text-4xl font-bold text-navy-700 dark:text-white">
-            28
+            15
           </h3>
-          <p className="text-base text-gray-600">Items</p>
+          <p className="text-base text-gray-600">Teams</p>
         </div>
 
         <div className="flex flex-col items-center justify-center border-gray-200 py-3 dark:border-white/10 md:border-r-2 md:py-0">
           <h3 className="text-4xl font-bold text-navy-700 dark:text-white">
-            4.8
+            78
           </h3>
-          <p className="text-base text-gray-600">Owners</p>
+          <p className="text-base text-gray-600">Participants</p>
         </div>
-        <div className="flex flex-col items-center justify-center border-gray-200 py-3 dark:border-white/10 md:border-r-2 md:py-0">
+        <div className="flex flex-col items-center justify-center border-gray-200 py-3 dark:border-white/10 md:py-0">
           <h3 className="flex items-center text-4xl font-bold text-navy-700 dark:text-white">
             <p className="text-3xl">
-              <FaEthereum />
+              <FaDollarSign />
             </p>
-            0.56
+            100,000
           </h3>
-          <p className="text-base text-gray-600">Floor Price</p>
+          <p className="text-base text-gray-600">Prize</p>
         </div>
-        <div className="flex flex-col items-center justify-center py-3 md:py-0">
+{/*         <div className="flex flex-col items-center justify-center py-3 md:py-0">
           <h3 className="flex items-center text-4xl font-bold text-navy-700 dark:text-white">
             <p className="text-3xl">
               <FaEthereum />
@@ -65,18 +67,59 @@ const Banner = () => {
             33.8
           </h3>
           <p className="text-base text-gray-600">Volume Traded</p>
-        </div>
+        </div> */}
       </Card>
       <div className="flex h-full w-full items-center justify-center md:w-[760px] lg:w-[870px]">
         <p className="mt-10 w-[280px] text-center font-dm text-lg leading-8 text-navy-700 dark:text-white md:w-full md:text-lg">
-          The Abstractus® project is an online art show and the First Art NFTs
-          on Ethereum, launched on May 9, 2017. Abstractus® features 28 unique
-          series of cards from 7 different artists. Abstractus® are referenced
-          with CryptoAbstractus® and Crypto in the original ERC-721 Non-Fungible
-          Token Standard, and pre-dates them both. Join the Abstractus® Discord
-          and check out theAbstractus® Docs to find out more.
+        Calling All Creators, Inventors, and Aspiring Entrepreneurs!
+        The UCI New Venture Competition offers you the opportunity to form a team, launch a startup and potentially fund a business idea 
+        – all within seven months. The competition is open to all UCI students, staff members and researchers as well as community members. 
+        Teams compete for $100,000 in cash prizes plus additional professional services!
         </p>
       </div>
+      <Card extra={"w-full p-5"}>
+      {/* Header */}
+      <div>
+        <h4 className="text-xl font-bold text-navy-700 dark:text-white">
+          Timeline
+        </h4>
+        <p className="text-base font-medium text-gray-600">
+          See your products in our timelines:
+        </p>
+      </div>
+ 
+      {/* Timeline items */}
+      <div className="mt-[30px]">
+        <TimelineItem
+          title="NVC Kickoff"
+          day="1"
+          weekday="Nov"
+          hours="10:30 - 12:00"
+          current="current"
+          mb="mb-[16px]"
+        />
+        <TimelineItem
+          mb="mb-[16px]"
+          title="Workshop: Marketing"
+          day="12"
+          weekday="Nov"
+          hours="10:30 - 12:00"
+        />
+        <TimelineItem
+          mb="mb-[16px]"
+          title="Concept Paper"
+          day="16"
+          weekday="Mar"
+          hours="09:00 - 14:00"
+        />
+        <TimelineItem
+          title="Presentation"
+          day="12"
+          weekday="Mar"
+          hours="20:00 - 22:30"
+        />
+      </div>
+    </Card>
     </div>
   );
 };

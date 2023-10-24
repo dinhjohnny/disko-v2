@@ -133,7 +133,7 @@ const Dashboard = () => {
       <div className="h-full w-full rounded-[20px]">
         {/* left side */}
         <div className="col-span-9 h-full w-full rounded-t-2xl xl:col-span-6">
-          <div className="mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
+          <div className="mt-16 md:mt-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-6">
             <Widget
               icon={<MdBarChart className="h-7 w-7" />}
               title={"Profile Views"}

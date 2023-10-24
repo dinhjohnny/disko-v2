@@ -33,28 +33,28 @@ const Banner = () => {
         <h4 className="text-xl font-bold text-navy-700 dark:text-white">
         {userData?.name}
         </h4>
-        <h5 className="text-base font-normal text-gray-600">Event Host</h5>
+        <h5 className="text-base font-normal text-gray-600">Product Designer</h5>
       </div>
 
       {/* Post followers */}
       <div className="mt-6 mb-3 flex gap-4 md:!gap-14">
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
-            17
+            2
           </h4>
-          <p className="text-sm font-normal text-gray-600">Events</p>
+          <p className="text-sm font-normal text-gray-600">Teams</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
-            2.7K
+            3
           </h4>
-          <p className="text-sm font-normal text-gray-600">RSVPs</p>
+          <p className="text-sm font-normal text-gray-600">Wins</p>
         </div>
         <div className="flex flex-col items-center justify-center">
           <h4 className="text-2xl font-bold text-navy-700 dark:text-white">
-            434
+            4th
           </h4>
-          <p className="text-sm font-normal text-gray-600">Followers</p>
+          <p className="text-sm font-normal text-gray-600">Ranking</p>
         </div>
       </div>
     </Card>

@@ -60,7 +60,7 @@ const Navbar = (props) => {
         xl: "calc(100vw - 350px)",
         "2xl": "calc(100vw - 365px)",
       }}
-      className="fixed top-3 right-3 flex w-[calc(100vw_-_6%)] flex-row flex-wrap items-center justify-between rounded-xl bg-white/30  p-2 backdrop-blur-xl dark:bg-[#0b14374d] md:top-4 md:right-[30px] md:w-[calc(100vw_-_8%)] lg:w-[calc(100vw_-_6%)] xl:top-[20px] xl:w-[calc(100vw_-_350px)] 2xl:w-[calc(100vw_-_365px)]"
+      className="fixed top-3 flex w-[calc(100vw_-_6%)] flex-row flex-wrap items-center justify-between rounded-xl bg-white/30 p-2 backdrop-blur-xl dark:bg-[#0b14374d] md:top-4 md:right-[30px] md:w-[calc(100vw_-_8%)] lg:w-[calc(100vw_-_6%)] xl:top-[20px] xl:w-[calc(100vw_-_350px)] 2xl:w-[calc(100vw_-_365px)]"
     >
       <div className="ml-[6px]">
         <div className="h-6 w-[224px] pt-1">

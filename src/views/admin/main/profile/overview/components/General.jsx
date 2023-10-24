@@ -61,6 +61,31 @@ const General = () => {
           </p>
         </div>
       </div>
+
+      <div className="grid grid-cols-1 gap-4 px-2 mt-4">
+        <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+            <p className="text-sm text-gray-600">Matching Preference</p>
+            <p className="text-base font-medium text-navy-700 dark:text-white">
+              Investors - Zotcourse is ready to monetize
+            </p>
+        </div>
+        <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+            <p className="text-sm text-gray-600">Interests</p>
+            <p className="text-base font-medium text-navy-700 dark:text-white">
+              Tennis, Hiking, Jogging
+            </p>
+        </div>
+        <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+            <p className="text-sm text-gray-600">Interests</p>
+            <p className="text-base font-medium text-navy-700 dark:text-white">
+              Tennis, Hiking, Jogging
+            </p>
+        </div>
+      </div>
+
+      
+
+
     </Card>
   );
 };

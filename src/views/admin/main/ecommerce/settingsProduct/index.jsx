@@ -3,7 +3,7 @@ import Delete from "./components/Delete";
 import Details from "./components/Details";
 import DropeZone from "./components/DropZone";
 import Information from "./components/Information";
-import Socials from "./components/Socials";
+import Teams from "./components/Teams";
 const SettingsProduct = () => {
   return (
     <div className="mt-4 grid h-full w-full grid-cols-2 gap-5 xl:mt-3">
@@ -24,13 +24,9 @@ const SettingsProduct = () => {
       {/* right side */}
       <div className="col-span-2 flex h-full w-full flex-col gap-5 xl:col-span-1">
         <DropeZone />
-        <Socials />
+        <Teams />
       </div>
       {/* full width */}
-      <div className="col-span-2 flex h-full w-full flex-col gap-5">
-        <Details />
-        <Delete />
-      </div>
     </div>
   );
 };

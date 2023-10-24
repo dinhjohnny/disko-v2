@@ -246,10 +246,9 @@ const routes = [
           //   component: <EcommerceNewProduct />,
           // },
           {
-            name: "Product Settings",
+            name: "Create a team",
             layout: "/admin",
-            path: "/main/ecommerce/settings",
-            exact: false,
+            path: "/main/team",
             component: <EcommerceProductSettings />,
           },
           // {

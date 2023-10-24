@@ -8,10 +8,10 @@ const Information = () => {
       {/* Header */}
       <div className="w-full px-[8px]">
         <h4 className="text-xl font-bold text-navy-700 dark:text-white">
-          Product Information
+          Startup Information
         </h4>
         <p className="mt-1 text-base text-gray-600">
-          Here you can change your product information
+          Here you can change your team information
         </p>
       </div>
       {/* inputs */}
@@ -19,21 +19,21 @@ const Information = () => {
         <div className="col-span-2 md:col-span-1">
           <InputField
             extra="mb-3"
-            label="Product Name"
-            placeholder="eg. Elegant Chair"
+            label="Team Name"
+            placeholder="eg. ScrubDaddy"
             id="name"
             type="text"
           />
           <InputField
             extra="mb-3"
-            label="Weight"
-            placeholder="eg. 20kg"
+            label="Competition Track"
+            placeholder="eg. Tech startup"
             id="weight"
             type="text"
           />
           <InputField
-            label="Color"
-            placeholder="eg. purple"
+            label="Other"
+            placeholder="eg. privately funded"
             id="color"
             type="text"
           />
@@ -42,7 +42,7 @@ const Information = () => {
         <div className="col-span-2 md:col-span-1">
           <InputField
             extra="mb-3"
-            label="Collection"
+            label="Stage"
             placeholder="eg. Classics"
             id="collection"
             type="text"

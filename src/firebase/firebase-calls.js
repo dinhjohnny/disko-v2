@@ -567,72 +567,51 @@ export const getCircle = async (circle, setCircleData) => {
       console.log("Could not retrieve circle data");
     }
   } catch (error) {
-    console.log(error);
-  }
- };
-  
- //Create Circle
- export const createCircle = async (currentUser, circleData, date, start, end) => {
+    console.log(error);}}
+
+ export const createCircle = async (currentUser, circleData) => {
   try {
-    //UI
-    const loader = toast.loading("Creating Circle...");
+    //UI
+    const loader = toast.loading("Creating Circle...");
   
-    //Create Blank Circles
-    const circleDoc = await addDoc(collection(db, "allCircles"), {
-      circleName: circleData?.title,
-      circleBio: circleData?.address,
-      circleDescription: circleData?.description,
-      circleCosts: circleData?.costs,
-      circleCreator: currentUser?.uid,
+    // Create Blank Circles
+    const circleDoc = await addDoc(collection(db, "allCircles"), {
+      name: circleData?.name,  // Updated
+      competitionTrack: circleData?.track,  // Updated
+      stage: circleData?.stage,  // Updated
+      description: circleData?.description,  // Updated
+      otherFunding: circleData?.funding,  // Updated
+      creator: currentUser?.uid,
       memberCount: [],
-      creatorName: currentUser?.name,
-      creatorPic: currentUser?.coverPic,
-      hostPhone: currentUser?.phone,
-      pic: circleData?.coverPic,
-      date: date,
+      // creatorName: currentUser?.name,
+      // creatorPic: currentUser?.profilePic,
+      // hostPhone: currentUser?.phone,
+      // pic: circleData?.coverPic,
       createdAt: new Date().toLocaleString(),
       views: 0,
-      start: start.toLocaleString(),
-      end: end.toLocaleString(),
-    });
+    });
   
-    await setDoc (
-      doc(collection(db, "allCircles"), circleDoc.id), {
-        circleID: circleDoc.id,
-        memberCount: arrayUnion({"uid": currentUser.uid, response: "Yes", number: currentUser.phone })
-      },
-      { merge: true }
-    );
-
-  const initialPostState = {
-    author: currentUser?.name,
-    uid: currentUser?.uid,
-    imageURL: "",
-    email: "",
-    caption: "Chat",
-    createdAt: "",
-    imageURL: "",
-    postID: "",
-    company: "",
-  };
-  createQuestion(currentUser,circleDoc.id, initialPostState)
-  await setDoc(
-    doc(collection(db, "users"), currentUser?.uid),
-    {
-      joinedCircle: arrayUnion({"uid":circleDoc.id, "response": "Yes", number: currentUser.phone}),
-    },
-    { merge: true });
+    await setDoc (
+      doc(collection(db, "allCircles"), circleDoc.id), {
+        startUpID: circleDoc.id,
+        memberCount: arrayUnion({"uid": currentUser.uid })
+      },
+      { merge: true }
+    );
 
   
-    //UI
-    toast.success("Event created.", { id: loader }  );
-  return circleDoc.id;
 
-    } catch (error) {
-      toast.error("Circle not created. Try again!");
-  console.log(error)
-    }
-  };
+    //UI
+    toast.success("Startup created.", { id: loader });
+    console.log("Startup created at " + circleDoc.id)
+    return circleDoc.id;
+
+
+  } catch (error) {
+    toast.error("Startup not created. Try again!");
+    console.log(error);
+  }
+};
   
  export const editCircle = async (
   userInfo,

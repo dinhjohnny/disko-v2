@@ -224,7 +224,7 @@ const Navbar = (props) => {
           button={
             <img
               className="h-10 w-10 rounded-full"
-              src={userData.coverPic}
+              src={userData.profilePic}
               alt="Elon Musk"
             />
           }
@@ -233,7 +233,7 @@ const Navbar = (props) => {
               <div className="mt-3 ml-4">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
-                  👋 Hey, {userData.name}
+                  👋 Hey, {userData.fullName}
                   </p>{" "}
                 </div>
               </div>
@@ -241,17 +241,17 @@ const Navbar = (props) => {
 
               <div className="mt-3 ml-4 flex flex-col">
                 <a
-                  href="/nowhere"
+                  href="/admin/main/profile/settings"
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   Profile Settings
                 </a>
-                <a
+                {/* <a
                   href=" "
                   className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   Newsletter Settings
-                </a>
+                </a> */}
                 <button
                   onClick={() => handleSignout()}
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"

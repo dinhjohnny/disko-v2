@@ -18,7 +18,6 @@ const Information = () => {
   
   // console.log("Auth Token in User Profile: " + authToken);
   const currentUser = auth?.currentUser;
-  console.log("Current user in User Profile: " + currentUser?.uid);
 
   useEffect(
     () => {

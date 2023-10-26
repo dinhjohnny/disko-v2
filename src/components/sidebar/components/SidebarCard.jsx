@@ -10,11 +10,16 @@ const FreeCard = () => {
 
   const [userData, setUserData] = useState([])
   const currentUser = auth?.currentUser;
+  useEffect(
+    () => {
+      if (userData.length == 0) {
+        getUser(currentUser, setUserData);
 
-  useEffect ( () => {
-     getUser(currentUser, setUserData)
-     console.log(userData)
-   }, [userData])
+      }
+    },
+    // eslint-disable-next-line
+    [currentUser]
+  );
 
 
   return (

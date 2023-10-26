@@ -143,6 +143,14 @@ const Information = () => {
       value={userData?.profilePic || ''}
       onChange={handleInputChange}
     />
+    <InputField
+      extra="mb-3"
+      label="Interests"
+      placeholder="Tell us more about your interests"
+      id="interests"
+      value={userData?.interests || ""}
+      onChange={handleInputChange}
+    />
     <div className="flex w-full justify-end">
       <button 
         onClick={handleFormSubmit}

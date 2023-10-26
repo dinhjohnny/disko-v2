@@ -18,21 +18,9 @@ const Banner = () => {
       {/* name and position */}
       <div className="mt-14 flex flex-col items-center">
         <h4 className="mt-1 text-xl font-bold text-navy-700 dark:text-white">
-          Vlad Mihalache
+          Enter your details below!
         </h4>
-        <div className="mt-2 flex items-center justify-center">
-          <h6 className="mt-2 text-sm font-normal text-gray-600">
-            Account type
-          </h6>
-          <select
-            className="mt-2 px-2 text-sm font-bold text-navy-700 dark:!bg-navy-800 dark:text-white"
-            name=""
-            id=""
-          >
-            <option value="admin">Administrator</option>
-            <option value="admin">Moderator</option>
-          </select>
-        </div>
+
       </div>
     </Card>
   );

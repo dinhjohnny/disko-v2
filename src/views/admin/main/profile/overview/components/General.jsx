@@ -8,10 +8,16 @@ const General = () => {
   const [userData, setUserData] = useState([])
   const currentUser = auth?.currentUser;
 
-  useEffect ( () => {
-    getUser(currentUser, setUserData)
-    console.log(userData)
-  }, [currentUser])
+  useEffect(
+    () => {
+      if (userData.length == 0) {
+        getUser(currentUser, setUserData);
+
+      }
+    },
+    // eslint-disable-next-line
+    [currentUser]
+  );
 
   return (
     <Card extra={"w-full h-full p-3"}>

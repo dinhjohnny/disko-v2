@@ -26,10 +26,16 @@ const Navbar = (props) => {
   const [userData, setUserData] = useState([])
   const currentUser = auth?.currentUser;
 
-  useEffect ( () => {
-    getUser(currentUser, setUserData)
-    console.log("current user data: " + userData)
-  }, [currentUser])
+  useEffect(
+    () => {
+      if (userData.length == 0) {
+        getUser(currentUser, setUserData);
+
+      }
+    },
+    // eslint-disable-next-line
+    [currentUser]
+  );
 
 
   const handleSignout = () => {

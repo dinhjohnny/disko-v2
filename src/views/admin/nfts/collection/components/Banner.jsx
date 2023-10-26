@@ -91,7 +91,7 @@ const Banner = () => {
       {/* Timeline items */}
       <div className="mt-[30px]">
         <TimelineItem
-          title="NVC Kickoff"
+          title="Stella Zhang New Venture Competition Kickoff"
           day="1"
           weekday="Nov"
           hours="10:30 - 12:00"
@@ -100,22 +100,22 @@ const Banner = () => {
         />
         <TimelineItem
           mb="mb-[16px]"
-          title="Workshop: Marketing"
-          day="12"
-          weekday="Nov"
+          title="Concept Papers Due"
+          day="10"
+          weekday="Mar"
           hours="10:30 - 12:00"
         />
         <TimelineItem
           mb="mb-[16px]"
-          title="Concept Paper"
-          day="16"
-          weekday="Mar"
+          title="Board Room Pitch"
+          day="10"
+          weekday="May"
           hours="09:00 - 14:00"
         />
         <TimelineItem
-          title="Presentation"
-          day="12"
-          weekday="Mar"
+          title="Grand Finale and Awards"
+          day="23"
+          weekday="May"
           hours="20:00 - 22:30"
         />
       </div>

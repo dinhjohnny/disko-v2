@@ -172,7 +172,7 @@ const Dashboard = () => {
               {filteredCircles?.length > 0 ? (
                 filteredCircles?.map((circles) => (
                   <Link className="button rounded-lg h-full w-full md:mb-4"
-                    to={`/admin/nfts/${circles?.circleID}`}
+                    to={`/admin/nfts/${circles?.startUpID}`}
                   >
                     <NftCard
                       bidders={[avatar1, avatar2, avatar3]} // images for those that have rsvped

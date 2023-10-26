@@ -11,10 +11,10 @@ const FreeCard = () => {
   const [userData, setUserData] = useState([])
   const currentUser = auth?.currentUser;
 
-  // useEffect ( () => {
-  //   getUser(currentUser, setUserData)
-  //   console.log(userData)
-  // }, [userData])
+  useEffect ( () => {
+     getUser(currentUser, setUserData)
+     console.log(userData)
+   }, [userData])
 
 
   return (
@@ -38,14 +38,14 @@ const FreeCard = () => {
       <div className="my-14 ml-2 flex items-center justify-center gap-3">
         <div className="h-12 w-12 rounded-full bg-blue-200">
           { /* User name and pic for bottom left of main dashobard*/}
-          <img src={userData?.coverPic} className="rounded-full" alt="avatar" />
+          <img src={userData?.profilePic} className="rounded-full" alt="avatar" />
         </div>
         <div className="ml-1">
           <h4 className="text-base font-bold text-navy-700 dark:text-white">
-          {userData?.name}
+          {userData?.fullName}
 
           </h4>
-          <p className="text-sm font-medium text-gray-600">DISKO Member</p>
+          <p className="text-sm font-medium text-gray-600">NVC</p>
         </div>
       </div>
     </div>

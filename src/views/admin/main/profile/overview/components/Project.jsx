@@ -38,17 +38,16 @@ const Project = () => {
     <Card extra={"w-full p-4 h-full"}>
       <div className="mb-8 w-full">
         <p className="text-xl font-bold text-navy-700 dark:text-white">
-          All events...
+          Teams
         </p>
         <p className="mt-2 text-base text-gray-600">
-          Here you can find more details about your events. Keep your user
-          engaged by providing meaningful information.
+          Here you can find more details about your current/prev teams.
         </p>
       </div>
       {filteredCircles?.length > 0 ? (
                 filteredCircles?.map((circles) => (
                   <Link className="button rounded-lg h-full w-full md:mb-4"
-                    to={`/admin/nfts/${circles?.circleID}`}
+                    to={`/admin/nfts/${circles?.startUpID}`}
                   >
                 <div className="flex w-full items-center justify-between rounded-2xl bg-white p-3 shadow-2xl shadow-gray-200 dark:!bg-navy-700 dark:shadow-none">
                   <div className="flex items-center">
@@ -57,15 +56,15 @@ const Project = () => {
                     </div>
                     <div className="ml-4">
                       <p className="text-base font-medium text-navy-700 dark:text-white">
-                        {circles?.circleName}
+                        {circles?.name}
                       </p>
                       <p className="mt-2 text-sm text-gray-600">
-                        Event
+                      {circles?.competitionTrack}
                         <a
                           className="ml-1 font-medium text-brand-500 hover:text-brand-500 dark:text-white"
                           href=" "
                         >
-                          See project details
+                          See startup details
                         </a>
                       </p>
                     </div>

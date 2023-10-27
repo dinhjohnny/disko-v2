@@ -53,7 +53,7 @@ const App = () => {
       <Route path="admin/*" element={<AdminLayout />} />
       <Route path="rtl/*" element={<RTLLayout />} />
       <Route path="/" element={<Navigate to="/admin" replace />} />
-      <Route path="/admin/nfts/:circleID"  element={<NftPage/>} />
+      {/* <Route path="/admin/nfts/:circleID"  element={<NftPage/>} /> */}
     </Routes>
   );
 };

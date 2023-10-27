@@ -36,7 +36,7 @@ const NftCard = ({ title, author, price, image, bidders, extra }) => {
               {title}{" "}
             </p>
             <p className="mt-1 text-sm font-medium text-gray-600 md:mt-2">
-              By {author}{" "}
+              {author}{" "}
             </p>
           </div>
 

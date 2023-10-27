@@ -12,7 +12,7 @@ const Banner = () => {
 
   useEffect(
     () => {
-      if (userData.length == 0) {
+      if (userData.length <= 10) {
         getUser(currentUser, setUserData);
 
       }

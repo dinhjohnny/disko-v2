@@ -162,7 +162,7 @@ const routes = [
         secondary: true,
       },
       {
-        name: "NFT Page",
+        name: "Team Page",
         layout: "/admin",
         path: "/nfts/page", // ????????
         component: <NFTPage />,

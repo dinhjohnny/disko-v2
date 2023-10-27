@@ -121,70 +121,65 @@ const NftPage = () => {
 
 
   return (
-    <div className="mt-4 grid h-full w-full grid-cols-1 gap-5 xl:mt-3">
+    <div className="mt-20 grid h-full w-full grid-cols-1 gap-5 xl:mt-3">
       <div className="grid h-full w-full grid-cols-6 gap-[20px]">
         <div className="col-span-6 lg:col-span-3">
-          <Banner className="h-[200px] w-[200px]" image={circleData?.pic} />
+          <Banner className="h-[200px] w-[200px]" image={NftLarge1} />
           <Description
             creator={circleData?.creatorName}
             description={
-              circleData?.circleDescription
+              "In the heart of UCI's New Venture Competition, Disko stands as a pioneering force, revolutionizing the entrepreneurial landscape. It begins with users crafting intricate profiles that vividly portray their skills, expertise, and entrepreneurial aspirations. Disko's seamless interface ensures that every essential detail is captured, laying the foundation for meaningful connections. Fuelled by cutting-edge AI algorithms, Disko meticulously analyzes these profiles. It evaluates skills, experiences, and project requirements, ingeniously knitting together teams that complement each other's strengths. By eliminating the tedious manual process of team formation, Disko liberates participants to focus on refining their startup visions.Once teams are forged, Disko transforms collaboration. It unveils a shared workspace imbued with real-time tools. Within this virtual arena, teams find shared document editing, video conferencing, and task management at their fingertips. Communication becomes effortless, fostering an environment where ideas flow freely, and tasks are coordinated seamlessly. The synergy of minds is further enhanced by Disko's integration of experienced mentors. These industry veterans step in, offering invaluable guidance. They help teams refine their ideas, surmount challenges, and craft robust business strategies."
             }
-            location={circleData?.circleCosts}
+            location={"Tech"}
           />
         </div>
 
         <div className=" col-span-6 lg:!col-span-3">
           <div className=" xl:px-16">
             <Auction
-              name={circleData?.circleName}
+              name={""}
               creator={circleData?.creatorName}
               creatorAvatar={AvatarSimmmple}
               price=  {new Date(circleData?.date?.seconds*1000).toLocaleString("en-US", options)}
-              bid={`${circleData?.views} views`}
+              bid={`Disko`}
             />
           </div>
-          <div className="pt-4">
-            <TableLastOffer
-              tableData={tableDataLastOffer}
-              columnsData={tableColumnsLastOffer}
-            />
-          </div>
+
         </div>
       </div>
       {/* NFT card */}
 
       <div className="h-full w-full rounded-[20px]">
-        <h4 className="mt-7 ml-5 text-2xl font-medium text-navy-700 dark:text-white">
-          More Events Like This One...
+        <h4 className="mt-16 xl:mt-7 ml-5 text-2xl font-medium text-navy-700 dark:text-white">
+          More Teams Like This One...
         </h4>
         <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 2xl:grid-cols-4">
           <NftCard
             bidders={[avatar1, avatar2, avatar3]}
-            title="Abstract Colors"
-            author="Esthera Jackson"
-            price=" 0.91"
+            title="Helios"
+            author="Seed Stage"
+            price="NVC 2023"
             image={Nft2}
           />
           <NftCard
             bidders={[avatar1, avatar2, avatar3]}
-            title="ETH AI Brain"
-            author="Nick Wilson"
-            price=" 0.7"
+            title="Orii.Ai"
+            author="Pre-Seed Stage"
+            price="NVC 2023"
             image={Nft4}
           />
           <NftCard
             bidders={[avatar1, avatar2, avatar3]}
-            title="Mesh Gradients"
-            author="Will Smith"
-            price=" 2.91"
+            title="Omni Pet Club"
+            author="Pre-Seed Stage"
+            price="NVC 2023"
             image={Nft5}
           />
           <NftCard
             bidders={[avatar1, avatar2, avatar3]}
-            title="Mesh Gradients"
-            author="Will Smith"
-            price=" 2.91"
+            title="Help Belt"
+            author="Pre-Seed Stage"
+            price="NVC 2023"
             image={Nft6}
           />
         </div>

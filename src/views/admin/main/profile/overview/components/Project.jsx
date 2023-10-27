@@ -25,7 +25,7 @@ const Project = () => {
 
   useEffect(
     () => {
-      if (userData.length == 0) {
+      if (userData.length <= 10) {
         getUser(currentUser, setUserData);
 
       }
@@ -52,7 +52,7 @@ const Project = () => {
                 <div className="flex w-full items-center justify-between rounded-2xl bg-white p-3 shadow-2xl shadow-gray-200 dark:!bg-navy-700 dark:shadow-none">
                   <div className="flex items-center">
                     <div className="">
-                      <img className="h-[83px] w-[83px] rounded-lg" src={circles?.pic} alt="" />
+                      <img className="h-[83px] w-[83px] rounded-lg" src={image1} alt="" />
                     </div>
                     <div className="ml-4">
                       <p className="text-base font-medium text-navy-700 dark:text-white">

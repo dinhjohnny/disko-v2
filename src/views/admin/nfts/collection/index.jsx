@@ -49,7 +49,7 @@ const NftCollection = () => {
       <div className="mt-[38px] grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
       {allCircles?.length > 0 ? (
                 allCircles?.map((circles) => (
-                  <Link className="button rounded-lg h-full w-full md:mb-4"
+                  <Link className="button rounded-lg h-full w-full md:mb-4 shadow-lg"
                     to={`/admin/nfts/${circles?.startUpID}`}
                   >
                     <NftCard
@@ -57,7 +57,7 @@ const NftCollection = () => {
                       title={circles.name} // event title
                       author={circles?.competitionTrack}
                       price={circles?.competitionTrack}
-                      image={circles.pic}
+                      image={avatar1}
                     />
                   </Link>
                 )))

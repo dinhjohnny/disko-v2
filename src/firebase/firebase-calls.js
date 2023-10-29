@@ -583,6 +583,7 @@ export const getCircle = async (circle, setCircleData) => {
       otherFunding: circleData?.funding,  // Updated
       creator: currentUser?.uid,
       memberCount: [],
+      logo: circleData?.logo,
       // creatorName: currentUser?.name,
       // creatorPic: currentUser?.profilePic,
       // hostPhone: currentUser?.phone,

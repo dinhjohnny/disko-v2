@@ -164,7 +164,7 @@ const routes = [
       {
         name: "Team Page",
         layout: "/admin",
-        path: "/nfts/page", // ????????
+        path: "/nfts/:circleID", // ????????
         component: <NFTPage />,
         secondary: true,
       },

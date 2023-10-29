@@ -11,9 +11,7 @@ const Banner = () => {
         className="jsu relative mt-1 flex h-28 w-full justify-center rounded-[20px] bg-cover"
         style={{ backgroundImage: `url(${banner})` }}
       >
-        <div className="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full bg-pink-400">
-          <img className="h-full w-full rounded-full" src={profile} alt="" />
-        </div>
+       
       </div>
       {/* name and position */}
       <div className="mt-14 flex flex-col items-center">

@@ -126,7 +126,7 @@ function NavbarAuth(props) {
           href="/admin/dashboards/default"
           className="leading-1 font-poppins text-[26px] font-bold uppercase text-white"
         >
-          Horizon <span className="font-medium"> PRO</span>
+          Disko <span className="font-medium"> </span>
         </a>
         <span
           className="flex cursor-pointer text-xl text-white xl:hidden"
@@ -246,14 +246,7 @@ function NavbarAuth(props) {
             </div>
           </div>
         </div>
-        <a
-          target="blank"
-          href="https://horizon-ui.com/pro?ref=live-pro-tailwind-react"
-        >
-          <button className="hidden items-center justify-center rounded-3xl bg-white px-8 py-2 text-base font-medium text-brand-500 transition duration-200 hover:opacity-90 active:opacity-80 xl:flex">
-            Buy Now
-          </button>
-        </a>
+       
       </div>
     </SidebarContext.Provider>
   );

@@ -4,8 +4,14 @@ import TextField from "components/fields/TextField";
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUser, createCircle } from "../../../../../../firebase/firebase-calls";
+import { getUser, createCircle, uploadImage } from "../../../../../../firebase/firebase-calls";
 import { auth } from "../../../../../../firebase/firebase";
+
+import DropZonefile from "./DropZonefile";
+// Assets
+import { MdOutlineCloudUpload } from "react-icons/md";
+import toast from "react-hot-toast";
+
 
 const Information = () => {
   const navigate = useNavigate();
@@ -15,7 +21,8 @@ const Information = () => {
     track: '',
     stage: '',  // Set default value
     description: '',
-    funding: ''
+    funding: '',
+    logo: 'test',
   })
   const [loading, setLoading] = useState(true);
 
@@ -44,6 +51,17 @@ const Information = () => {
     // eslint-disable-next-line
     [currentUser]
   );
+  const handleUserImage = async (e) => {
+    console.log("handleUserBeingCalled")
+    const file = e.target.files[0];
+    const field = e.target.name;
+    const loader = toast.loading("uploading image");
+    const path = `images/${currentUser.uid}/${file.name}`;
+    const fieldURL = await uploadImage(path, file);
+    toast.success("uploaded image", { id: loader });
+    console.log("image uploaded successfully: " + fieldURL)
+    setUserData({ ...userData, [field]: fieldURL });
+  };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -58,6 +76,17 @@ const Information = () => {
     await createCircle(currentUser, startupData);  // Assuming updateUser updates the user data
   };
 
+
+  //code for upload button
+  const fileInputRef = React.useRef(null);
+  const handleDropZoneClick = () => {
+    console.log("opening upload screen")
+    fileInputRef.current.click();
+};
+const input = document.getElementById('create_input');
+
+  
+
   return (
     <Card extra={"w-full px-[20px] py-[22px] h-fit"}>
       {/* Header */}
@@ -68,8 +97,49 @@ const Information = () => {
         <p className="mt-1 text-base text-gray-600">
           Here you can change your team information
         </p>
+        
+     
+            
+        {/* inputs */}
       </div>
-      {/* inputs */}
+      <Card extra={"w-full py-[26px] px-[30px] h-[330px]"}>
+            <p className="mt-1 text-xl font-bold text-navy-700 dark:text-white">
+                Product Images
+            </p>
+           
+          
+            {/* <input
+              type="file"
+              id="pic"
+              name="pic"
+              accept="image/*, .gif"
+              className="hidden"
+              onChange={handleUserImage}
+            />        */}
+          
+          <div className="left-4 text-white mt-4 mb-12 cursor-pointer md:cursor-default relative aspect-[16/9] h-[120px] w-[120px] md:h-1/3 md:w-1/3 hover:scale-105">
+          <label
+            htmlFor="pic"
+           
+          >
+            <input
+              type="file"
+              id="pic"
+              name="pic"
+              accept="image/*, .gif"
+              className="hidden"
+              onChange={handleUserImage}
+            />          
+             <img 
+            src={userData?.logo ? userData?.logo : ""}
+            alt="No Photo Selected"
+            className="object-cover h-full w-full cursor-pointer rounded-lg"
+          />
+          </label>
+          Edit Cover Pic
+          </div>
+        </Card>
+     
       <div className="mt-9 grid grid-cols-2 gap-3">
         <div className="col-span-2 md:col-span-1">
           <InputField

@@ -24,24 +24,7 @@ import { FiEdit3 } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import { auth } from "../../../../firebase/firebase";
 import { joinCircle, getCircle, viewCount, textBlast,archiveCircle} from "../../../../firebase/firebase-calls";
-//import EditProfileModal from "./EditProfileModal";
-// import {  Questions } from "components/components";
-// import { ResponseModal } from "components/ResponseModal"
 
-import { Link } from "react-router-dom";
-// import SignUpPop from "./Signup";
-import { format } from 'date-fns'
-// import { RWebShare } from "react-web-share";
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-// import AccessTimeTwoToneIcon from '@mui/icons-material/AccessTimeTwoTone';
-// import PlaceTwoToneIcon from '@mui/icons-material/PlaceTwoTone';
-// import IosShareIcon from '@mui/icons-material/IosShare';
-// import GoogleCalendar from "components/GoogleCalendar";
-// import ICalendarLink from "react-icalendar-link";
-// import EditCircle from "./editCircle";
-// import { getAnalytics, logEvent } from "firebase/analytics";
-// import backgroundImage from "assets/BI2.jpg"
-// import confetti from 'canvas-confetti';
 
 const NftPage = () => {
   //Logic
@@ -57,59 +40,19 @@ const NftPage = () => {
   const currentUser = auth?.currentUser;
   const [circleData, setCircleData] = useState([]);
   const authToken = localStorage.getItem("authToken");
-  const [showSignUp, setShowSignUp] = useState(false)
-  const [userData, setUserData] = useState([])
-  const [choice, setChoice] = useState("")
-  const website = `https://disko.rsvp/circle/${circleID} `
-  const [showEdit, setShowEdit] = useState(false)
-
-
-  //get the one discussion for the circle
-  const filteredPosts = allPosts?.filter(
-    (post) => post.circle == circleID
-  );
-
-  //join the circle with the response if logged in
- const signUp = async(choice) =>{
-    if (authToken){
-      console.log("User Selected:" + choice)
-      joinCircle (currentUser, circleData, choice)
-      if (choice === "Yes") {
-        // onClickConfetti();
-      }
-    }else{
-      //open the popup for signin 
-      setChoice(choice)
-      setShowSignUp((prev) => !prev)
-    }
-  }
-  function formatAMPM(date1, date2) {
-    var hours1 = date1.getHours();
-    var hours2 = date2.getHours();
-    var ampm1 = hours1 >= 12 ? 'pm' : 'am';
-    hours1 = hours1 % 12;
-    hours1 = hours1 ? hours1 : 12; // the hour '0' should be '12'
-  
-    console.log(hours2);
-    var ampm2 = hours2 >= 12 ? 'pm' : 'am';
-    hours2 = hours2 % 12;
-    hours2 = hours2 ? hours2 : 12; // the hour '0' should be '12'
-  
-    var strTime = hours1 + ' ' + ampm1 + ' - ' + hours2 + ' ' + ampm2;
-    return strTime;
-  }
- 
 
   useEffect(() => {
     if (circleData?.length == 0) {
+      // console.log(circleID + ": " + circleData)
       getCircle(circleID, setCircleData);
-      console.log("circleData" + circleData);
+      console.log(circleID + "data has been fetched for Team Page!");
+      setIsLoading(false);
       
 
-      setTimeout(() => {
-        viewCount(circleID);
-        setIsLoading(false);
-      }, 1000); // wait for 0.75 second before calling getCircle
+      // setTimeout(() => {
+      //   viewCount(circleID);
+      //   setIsLoading(false);
+      // }, 1000); // wait for 0.75 second before calling getCircle
     }
   }, [circleData]);
 
@@ -121,70 +64,72 @@ const NftPage = () => {
 
 
   return (
-    <div className="mt-20 grid h-full w-full grid-cols-1 gap-5 xl:mt-3">
-      <div className="grid h-full w-full grid-cols-6 gap-[20px]">
-        <div className="col-span-6 lg:col-span-3">
-          <Banner className="h-[200px] w-[200px]" image={NftLarge1} />
-          <Description
-            creator={circleData?.creatorName}
-            description={
-              "In the heart of UCI's New Venture Competition, Disko stands as a pioneering force, revolutionizing the entrepreneurial landscape. It begins with users crafting intricate profiles that vividly portray their skills, expertise, and entrepreneurial aspirations. Disko's seamless interface ensures that every essential detail is captured, laying the foundation for meaningful connections. Fuelled by cutting-edge AI algorithms, Disko meticulously analyzes these profiles. It evaluates skills, experiences, and project requirements, ingeniously knitting together teams that complement each other's strengths. By eliminating the tedious manual process of team formation, Disko liberates participants to focus on refining their startup visions.Once teams are forged, Disko transforms collaboration. It unveils a shared workspace imbued with real-time tools. Within this virtual arena, teams find shared document editing, video conferencing, and task management at their fingertips. Communication becomes effortless, fostering an environment where ideas flow freely, and tasks are coordinated seamlessly. The synergy of minds is further enhanced by Disko's integration of experienced mentors. These industry veterans step in, offering invaluable guidance. They help teams refine their ideas, surmount challenges, and craft robust business strategies."
-            }
-            location={"Tech"}
-          />
-        </div>
-
-        <div className=" col-span-6 lg:!col-span-3">
-          <div className=" xl:px-16">
-            <Auction
-              name={""}
-              creator={circleData?.creatorName}
-              creatorAvatar={AvatarSimmmple}
-              price=  {new Date(circleData?.date?.seconds*1000).toLocaleString("en-US", options)}
-              bid={`Disko`}
-            />
-          </div>
-
-        </div>
+    (!isLoading && (<div className="mt-20 grid h-full w-full grid-cols-1 gap-5 xl:mt-3">
+    <div className="grid h-full w-full grid-cols-6 gap-[20px]">
+      <div className="col-span-6 lg:col-span-3">
+        <Banner className="h-[200px] w-[200px]" image={NftLarge1} />
+        <Description
+          creator={circleData?.creatorName}
+          description={
+            "In the heart of UCI's New Venture Competition, Disko stands as a pioneering force, revolutionizing the entrepreneurial landscape. It begins with users crafting intricate profiles that vividly portray their skills, expertise, and entrepreneurial aspirations. Disko's seamless interface ensures that every essential detail is captured, laying the foundation for meaningful connections. Fuelled by cutting-edge AI algorithms, Disko meticulously analyzes these profiles. It evaluates skills, experiences, and project requirements, ingeniously knitting together teams that complement each other's strengths. By eliminating the tedious manual process of team formation, Disko liberates participants to focus on refining their startup visions.Once teams are forged, Disko transforms collaboration. It unveils a shared workspace imbued with real-time tools. Within this virtual arena, teams find shared document editing, video conferencing, and task management at their fingertips. Communication becomes effortless, fostering an environment where ideas flow freely, and tasks are coordinated seamlessly. The synergy of minds is further enhanced by Disko's integration of experienced mentors. These industry veterans step in, offering invaluable guidance. They help teams refine their ideas, surmount challenges, and craft robust business strategies."
+          }
+          location={circleData?.competitionTrack}
+        />
       </div>
-      {/* NFT card */}
 
-      <div className="h-full w-full rounded-[20px]">
-        <h4 className="mt-16 xl:mt-7 ml-5 text-2xl font-medium text-navy-700 dark:text-white">
-          More Teams Like This One...
-        </h4>
-        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 2xl:grid-cols-4">
-          <NftCard
-            bidders={[avatar1, avatar2, avatar3]}
-            title="Helios"
-            author="Seed Stage"
-            price="NVC 2023"
-            image={Nft2}
-          />
-          <NftCard
-            bidders={[avatar1, avatar2, avatar3]}
-            title="Orii.Ai"
-            author="Pre-Seed Stage"
-            price="NVC 2023"
-            image={Nft4}
-          />
-          <NftCard
-            bidders={[avatar1, avatar2, avatar3]}
-            title="Omni Pet Club"
-            author="Pre-Seed Stage"
-            price="NVC 2023"
-            image={Nft5}
-          />
-          <NftCard
-            bidders={[avatar1, avatar2, avatar3]}
-            title="Help Belt"
-            author="Pre-Seed Stage"
-            price="NVC 2023"
-            image={Nft6}
+      <div className=" col-span-6 lg:!col-span-3">
+        <div className=" xl:px-16">
+          <Auction
+            name={""}
+            creator={circleData?.creatorName}
+            creatorAvatar={AvatarSimmmple}
+            price=  {new Date(circleData?.date?.seconds*1000).toLocaleString("en-US", options)}
+            bid={circleData?.name}
           />
         </div>
+
       </div>
     </div>
+    {/* NFT card */}
+
+    <div className="h-full w-full rounded-[20px]">
+      <h4 className="mt-16 xl:mt-7 ml-5 text-2xl font-medium text-navy-700 dark:text-white">
+        More Teams Like This One...
+      </h4>
+      <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 2xl:grid-cols-4">
+        <NftCard
+          bidders={[avatar1, avatar2, avatar3]}
+          title="Helios"
+          author="Seed Stage"
+          price="NVC 2023"
+          image={Nft2}
+        />
+        <NftCard
+          bidders={[avatar1, avatar2, avatar3]}
+          title="Orii.Ai"
+          author="Pre-Seed Stage"
+          price="NVC 2023"
+          image={Nft4}
+        />
+        <NftCard
+          bidders={[avatar1, avatar2, avatar3]}
+          title="Omni Pet Club"
+          author="Pre-Seed Stage"
+          price="NVC 2023"
+          image={Nft5}
+        />
+        <NftCard
+          bidders={[avatar1, avatar2, avatar3]}
+          title="Help Belt"
+          author="Pre-Seed Stage"
+          price="NVC 2023"
+          image={Nft6}
+        />
+      </div>
+    </div>
+  </div>))
+
+    
   );
 };
 

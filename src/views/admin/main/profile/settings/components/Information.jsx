@@ -60,7 +60,7 @@ const Information = () => {
         Account Settings
       </h4>
       <p className="mt-1 text-base text-gray-600">
-        Here you can change user account information
+        Here you can change user account information. Remember to save below!
       </p>
     </div>
     {/* inputs */}
@@ -134,7 +134,7 @@ const Information = () => {
       value={userData?.networkingGoal || ''}
       onChange={handleInputChange}
     />
-    <InputField
+    {/* <InputField
       extra="mb-3"
       label="Profile Picture URL"
       placeholder="https://example.com/your-photo.jpg"
@@ -142,7 +142,7 @@ const Information = () => {
       type="text"
       value={userData?.profilePic || ''}
       onChange={handleInputChange}
-    />
+    /> */}
     <InputField
       extra="mb-3"
       label="Interests"

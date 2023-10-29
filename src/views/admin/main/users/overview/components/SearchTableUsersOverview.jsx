@@ -8,6 +8,9 @@ import {
   useTable,
 } from "react-table";
 
+import image from "../../../../../../assets/svg/LinkedIn_icon.svg.png"
+import { Link } from "react-router-dom";
+
 function SearchTableUsers(props) {
   const { columnsData, tableData } = props;
 
@@ -103,24 +106,33 @@ function SearchTableUsers(props) {
                               alt=""
                             />
                           </div>
-                          <p className="font-medium text-navy-700 dark:text-white">
+                          <Link 
+                            to={`/admin/main/profile/overview/${cell.value[2]}`}  // assuming cell.value[2] contains userID
+                            className="font-medium text-navy-700 dark:text-white"
+                          >
                             {cell.value[0]}
-                          </p>
+                          </Link>
                         </div>
                       );
-                    } else if (cell.column.Header === "EMAIL") {
+                    } else if (cell.column.Header === "LINKEDIN") {
+                      data = (
+                        <div className="w-full text-base font-medium text-navy-700 dark:text-white">
+                          <a href={cell.value} target="_blank" rel="noopener noreferrer">
+                            <img src={image} alt="LinkedIn" className="w-8 h-auto"/>
+                          </a>
+                        </div>
+                      );
+                    }
+                    else if (cell.column.Header === "EMAIL") {
                       data = (
                         <div className="w-full text-base font-medium text-navy-700 dark:text-white">
                           {cell.value}
                         </div>
                       );
-                    } else if (cell.column.Header === "USERNAME") {
-                      data = (
-                        <div className="w-full text-base font-medium text-navy-700 dark:text-white">
-                          {cell.value}
-                        </div>
-                      );
-                    } else if (cell.column.Header === "JOIN DATE") {
+                    } 
+                    
+                  
+                     else if (cell.column.Header === "JOIN DATE") {
                       data = (
                         <div className="w-full text-base font-medium text-navy-700 dark:text-white">
                           {cell.value}

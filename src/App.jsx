@@ -50,10 +50,15 @@ const App = () => {
   return (
     <Routes>
       <Route path="auth/*" element={<AuthLayout />} />
-      <Route path="admin/*" element={<AdminLayout />} />
+
+
+      <Route path="admin/*" element={<AdminLayout />} >
+        <Route path="nfts/:circleID"  element={<NftPage/>} />
+      </Route>
+
+
       <Route path="rtl/*" element={<RTLLayout />} />
       <Route path="/" element={<Navigate to="/admin" replace />} />
-      {/* <Route path="/admin/nfts/:circleID"  element={<NftPage/>} /> */}
     </Routes>
   );
 };

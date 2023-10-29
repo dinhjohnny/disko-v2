@@ -108,10 +108,10 @@ function SignInCenter() {
       maincard={
         <Card extra="max-w-[405px] md:max-w-[510px] md:w-[510px] h-max mx-2.5 md:mx-auto mt-[50px] mb-auto py-2.5 px-4 md:!p-[50px] pt-8 md:pt-[50px]">
           <h3 className="mb-[10px] text-4xl font-bold text-gray-900 dark:text-white">
-            Sign In
+            Sign In/Up
           </h3>
           <p className="mb-9 ml-1 text-base text-gray-600">
-            Enter your email and password to sign in!
+            Use Google to quickly Sign in/up!
           </p>
           <div className="mb-6 flex h-[50px] w-full items-center justify-center gap-2 rounded-xl bg-lightPrimary hover:cursor-pointer dark:bg-navy-700 dark:text-white">
             <div className="rounded-full text-xl">
@@ -121,7 +121,7 @@ function SignInCenter() {
               Sign In with Google
             </button>
           </div>
-          <div className="mb-4 flex items-center gap-3">
+          {/* <div className="mb-4 flex items-center gap-3">
             <div className="h-px w-full bg-gray-200 dark:!bg-navy-700" />
             <p className="text-base font-medium text-gray-600"> or </p>
             <div className="h-px w-full bg-gray-200 dark:!bg-navy-700" />
@@ -169,7 +169,7 @@ function SignInCenter() {
             >
               Create an Account
             </a>
-          </div>
+          </div> */}
         </Card>
       }
     />

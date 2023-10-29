@@ -5,15 +5,19 @@ import { FaEthereum, FaDollarSign } from "react-icons/fa";
 import Card from "components/card";
 import TimelineItem from "components/dataDisplay/TimelineItem";
 
+
+import background from "assets/img/nvc/nvc-header-24_r1a.jpg"
+import logo from "assets/img/nvc/uciMerage.png"
+
 const Banner = () => {
   return (
     <div className="flex h-full w-full flex-col items-center rounded-[20px]">
       <div
-        style={{ backgroundImage: `url(${NftBanner2})` }}
+        style={{ backgroundImage: `url(${background})` }}
         className="relative flex h-[150px] w-full items-center justify-center rounded-[20px] bg-cover md:h-[120px] lg:h-[170px] 3xl:h-[220px]"
       >
         <div className="absolute -bottom-20 flex h-[180px] w-[180px] items-center justify-center rounded-full border-[10px] border-white bg-navy-700 dark:!border-navy-900">
-          <img className="h-full w-full rounded-full" src={NftProfile} alt="" />
+          <img className="h-full w-full rounded-full" src={logo} alt="" />
         </div>
       </div>
       {/* profile info */}

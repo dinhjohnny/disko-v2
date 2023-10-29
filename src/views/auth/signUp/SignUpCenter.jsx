@@ -30,7 +30,7 @@ function SignUpCenter() {
             <div className="h-px w-full bg-gray-200 dark:!bg-navy-700" />
           </div>
           {/* user info */}
-          <div className="mb-3 flex w-full items-center justify-center gap-4">
+          {/* <div className="mb-3 flex w-full items-center justify-center gap-4">
             <div className="w-1/2">
               <InputField
                 variant="auth"
@@ -53,7 +53,6 @@ function SignUpCenter() {
               />
             </div>
           </div>
-          {/* Email */}
           <InputField
             variant="auth"
             extra="mb-3"
@@ -62,7 +61,6 @@ function SignUpCenter() {
             id="email"
             type="email"
           />
-          {/* Password */}
           <InputField
             variant="auth"
             extra="mb-3"
@@ -71,7 +69,6 @@ function SignUpCenter() {
             id="password"
             type="password"
           />
-          {/* Checkbox */}
           <div className="mt-2 flex items-center justify-between px-2">
             <div className="flex">
               <Checkbox />
@@ -96,7 +93,7 @@ function SignUpCenter() {
             >
               Sign In
             </a>
-          </div>
+          </div> */}
         </Card>
       }
     />
